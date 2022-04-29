@@ -1,27 +1,51 @@
-# OSMS
+# ONLINE SERVICE MANAGEMENT SYSTEM 🥇
+> This project all design copied from "GeekyShows" Youtube Channel  
+> You can download this project and run your local machine (computer)
+<hr>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+<!-- # <a href="https://dontknew.github.io/food-delivery" target="blank"> checkout Demo </a>
 
-## Development server
+## Project Features :
+### Public User Features :
+| Public user can order food & add to cart food items|
+| ------------- |
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+| Cart System  |
+| ------------- |
 
-## Code scaffolding
+| Public user can track order status  |
+| ------------- |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| Public user can give feedback or contact to administrator  |
+| ------------- |
 
-## Build
+### Admin Features :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+| Admin can add another admin/member for manage website |
+| ------------- |
 
-## Running unit tests
+| Cart System  |
+| ------------- |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+| Public user can track order status  |
+| ------------- |
 
-## Running end-to-end tests
+| Public user can give feedback or contact to administrator  |
+| ------------- |
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+|  Admin can check food order details & manage the food until delivery to customer  |
+| ------------- |
 
-## Further help
+|  Admin can update  contents and theme of webpage   |
+| ------------- |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+|  Admin can change their profile information   |
+| ------------- | -->
+
+
+
+## Technology Used :
+> * PHP OOP(API)
+> * MYSQLI
+> * Angular
+> * Boostrap 5
