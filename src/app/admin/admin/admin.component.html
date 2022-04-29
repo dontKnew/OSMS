@@ -1,0 +1,148 @@
+<!-- Top Navbar -->
+<nav class="navbar navbar-dark fixed-top bg-danger p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" (click)="showTab('dashboard')">OSMS</a>
+   </nav>
+   <!-- Side Bar -->
+   <div class="container-fluid mb-5" style="margin-top:40px;">
+    <div class="row">
+     <nav class="col-sm-3 col-md-2 bg-light sidebar py-5 d-print-none">
+      <div class="sidebar-sticky">
+       <ul class="nav flex-column">
+        <li class="nav-item">
+         <a class="nav-link " (click)="showTab('dashboard')">
+          <i class="fas fa-tachometer-alt"></i>
+          Dashboard
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('work')">
+          <i class="fab fa-accessible-icon"></i>
+          Work Order
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('requests')">
+          <i class="fas fa-align-center"></i>
+          Requests
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('assets')">
+          <i class="fas fa-database"></i>
+          Assets
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('technician')">
+          <i class="fab fa-teamspeak"></i>
+          Technician
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('requester')">
+          <i class="fas fa-users"></i>
+          Requester
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('sellreport')">
+          <i class="fas fa-table"></i>
+          Sell Report
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('workreport')">
+          <i class="fas fa-table"></i>
+          Work Report
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" (click)="showTab('changepass')">
+          <i class="fas fa-key"></i>
+          Change Password
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link courser-pointer" (click)="loginSerivce.logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          Logout
+         </a>
+        </li>
+       </ul>
+      </div>
+     </nav>
+     <!--main content -->
+
+     <!-- dashboard -->
+     <div class="col-sm-9 col-md-10" *ngIf="dashboard">
+        <div class="row mx-5 text-center">
+          <div class="col-sm-4 mt-5">
+            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+              <div class="card-header">Requests Received</div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  10
+                </h4>
+                <a class="btn text-white" href="request.php">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mt-5">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+              <div class="card-header">Assigned Work</div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  2
+                </h4>
+                <a class="btn text-white" href="work.php">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mt-5">
+            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+              <div class="card-header">No. of Technician</div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  50
+                </h4>
+                <a class="btn text-white" href="technician.php">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mx-5 mt-5 text-center">
+          <!--Table-->
+          <p class=" bg-dark text-white p-2">List of Requesters</p>
+          <table class="table">
+        <thead>
+         <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let item of requesterData">
+          <th scope="row">{{item.r_login_id}}</th>
+          <td>{{item.r_name}}</td>
+          <td>{{item.r_email}}</td>
+        </tbody>
+       </table>
+        </div>
+      </div>
+      <!-- end dashboard -->
+
+
+      <!-- requester  -->
+      <app-assets *ngIf="assets"></app-assets>
+      <app-changepassword *ngIf="changepass"></app-changepassword>
+      <app-requester *ngIf="requester"></app-requester>
+      <app-requests *ngIf="requests"></app-requests>
+      <app-sellreport *ngIf="sellreport"></app-sellreport>
+      <app-technician *ngIf="technician"></app-technician>
+      <app-workorder *ngIf="work"></app-workorder>
+      <app-workreport *ngIf="workreport"></app-workreport>
+     <!-- end content -->
+
+     </div>
+    </div>

@@ -1,0 +1,107 @@
+<div class="col-sm-12 mt-5  mx-3">
+    <form [formGroup]="searchForm" (ngSubmit)="searchRequest()" class="mt-3 d-print-none d-md-flex" *ngIf="!showStatus">
+      <label for="checkid"> <strong>Enter Request ID:</strong> </label>
+      <div class="form-group mx-1">
+        <input type="text" class="form-control" formControlName="searchid" required>
+      </div>
+      <div class="text-center">
+        <button type="submit" [disabled]="searchForm.invalid" class="btn btn-danger"> {{searchBtn}} </button>
+      </div>
+    </form>
+    <div class="alert alert-info mt-2 d-flex justify-content-center" role="alert" *ngIf="message!==''"> {{message}} </div>
+    <ng-container *ngIf="showStatus">
+    <h3 class="text-center mt-5">Assigned Work Details</h3>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>Request ID</td>
+          <td>
+            {{requestid}}
+          </td>
+        </tr>
+        <tr>
+          <td>Request Info</td>
+          <td>
+            {{requestinfo}}
+          </td>
+        </tr>
+        <tr>
+          <td>Request Description</td>
+          <td>
+            {{requestdesc}}
+          </td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>
+            {{requestername}}
+          </td>
+        </tr>
+        <tr>
+          <td>Address Line 1</td>
+          <td>
+            {{requesteradd1}}
+          </td>
+        </tr>
+        <tr>
+          <td>Address Line 2</td>
+          <td>
+            {{requesteradd2}}
+          </td>
+        </tr>
+        <tr>
+          <td>City</td>
+          <td>
+            {{requestercity}}
+          </td>
+        </tr>
+        <tr>
+          <td>State</td>
+          <td>
+            {{requesterstate}}
+          </td>
+        </tr>
+        <tr>
+          <td>Pin Code</td>
+          <td>
+            {{requesterzip}}
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            {{requesteremail}}
+          </td>
+        </tr>
+        <tr>
+          <td>Mobile</td>
+          <td>
+            {{requestermobile}}
+          </td>
+        </tr>
+        <tr>
+          <td>Assigned Date</td>
+          <td>
+            {{requestdate | date:"dd-MM-yyyy"}}
+          </td>
+        </tr>
+        <tr>
+          <td>Technician Name</td>
+          <td>Zahir Khan</td>
+        </tr>
+        <tr>
+          <td>Customer Sign</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Technician Sign</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <form class="d-print-none d-inline mr-3"><input class="btn btn-danger" type="submit" value="Print" onClick="window.print()"></form>
+      <form class="d-print-none d-inline"><input class="btn btn-secondary" type="submit" value="Close" (click)="closeStatus()"></form>
+    </div>
+  </ng-container>
+  </div>

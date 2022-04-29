@@ -1,0 +1,51 @@
+<div class="col-sm-12 col-md-12 mt-5 text-center">
+    <form class="d-print-none" [formGroup]="workReportForm">
+        <div class="form-row">
+            <div class="form-group ">
+                <input type="date" class="form-control" formControlName="startdate" required>
+            </div> <span class="mx-2"> to </span>
+            <div class="form-group">
+                <input type="date" class="form-control" formControlName="enddate" required>
+            </div>
+            <div class="form-group mx-2">
+                <input type="button" class="btn btn-secondary" value="Search" (click)="workReport()" [disabled]="!workReportForm.valid" >
+            </div>
+        </div>
+    </form>
+    <ng-container *ngIf="workReportData">
+        <p class=" bg-dark text-white p-2 mt-4">Details</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Req ID</th>
+                    <th scope="col">Request Info</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Technician</th>
+                    <th scope="col">Assigned Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of workReportData">
+                    <th scope="row">{{item.request_id}} </th>
+                    <td>{{item.request_info}}</td>
+                    <td>{{item.requester_name}}</td>
+                    <td>{{item.requester_add2}}</td>
+                    <td>{{item.requester_city}}</td>
+                    <td>{{item.requester_mobile}}</td>
+                    <td>{{item.assign_tech}}</td>
+                    <td>{{item.assign_date}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <form class="d-print-none"><input class="btn btn-danger" type="submit" value="Print"
+                                onClick="window.print()"></form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+    <div class='alert alert-warning col-sm-6 ml-5 mt-2' role='alert' *ngIf="message!==''"> {{message}} </div> 
+</div>

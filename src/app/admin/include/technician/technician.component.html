@@ -1,0 +1,81 @@
+<div class="col-sm-9 col-md-10 mt-5 text-center" *ngIf="showTable">
+    <!--Table-->
+    <div class="alert alert-info col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
+    <p class=" bg-dark text-white p-2">List of Technicians</p>
+    <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">Emp ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">City</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let item of technicianData">
+      <th scope="row">
+          {{item.empid}}</th>
+      <td>{{item.empName}}</td>
+      <td>{{item.empCity}}</td>
+      <td>{{item.empMobile}}</td>
+      <td>{{item.empEmail}}</td>
+      <td>
+          <form class="d-inline">
+           <button  class="btn btn-info mr-3" (click)="viewTechnician(item.empid)" value="View">
+               <i class="fas fa-pen"></i>
+            </button>
+        </form>  
+        <form  class="d-inline">
+            <button  class="btn btn-secondary" (click)="deleteTechnician(item.empid)" value="Delete"><i class="far fa-trash-alt"></i></button>
+        </form>
+    </td>
+     </tr>
+   </tbody>
+   </table>
+   <div>
+     <button class="btn btn-info box" (click)="backToTable('addTable')">
+       <i class="fas fa-plus fa-2x"></i>
+     </button>
+  </div>
+
+  <!-- FORM TECHNICIAN -->
+  <div class="col-sm-12 mt-5  mx-3 jumbotron" *ngIf="doubleTable">
+    <h3 class="text-center" *ngIf="editTable">Update Technician Details</h3>
+    <h3 class="text-center" *ngIf="addTable">New Technician Details</h3>
+  <div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
+  <form [formGroup]="technicianForm">
+    <div class="form-group" *ngIf="editTable">
+      <label for="empId">Emp ID</label>
+      <input type="text" class="form-control"  formControlName="empid" required readonly>
+      <i class="text-danger" *ngIf="empid?.invalid && empid?.touched">Please enter valid employee id</i>
+    </div>
+    <div class="form-group">
+      <label for="empName">Name</label>
+      <input type="text" class="form-control"  formControlName="empName" required>
+      <i class="text-danger" *ngIf="empName?.invalid && empName?.touched">Please enter valid name</i>
+    </div>
+    <div class="form-group">
+      <label for="empCity">City</label>
+      <input type="text" class="form-control"  formControlName="empCity" required>
+      <i class="text-danger" *ngIf="empCity?.invalid && empCity?.touched">Please enter valid city</i>
+    </div>
+    <div class="form-group">
+      <label for="empMobile">Mobile</label>
+      <input type="text" class="form-control"  formControlName="empMobile" required>
+      <i class="text-danger" *ngIf="empMobile?.invalid && empMobile?.touched">Please enter valid mobile number</i>
+    </div>
+    <div class="form-group">
+      <label for="empEmail">Email</label>
+      <input type="email" class="form-control"  formControlName="empEmail" required>
+      <i class="text-danger" *ngIf="empEmail?.invalid && empEmail?.touched">Please enter valid email</i>
+    </div>
+    <div class="text-center">
+      <button  class="btn btn-danger"  [disabled]="technicianForm.invalid" (click)="updateTechnician()" *ngIf="editTable">{{updateBtn}} </button>
+      <button  class="btn btn-success"  [disabled]="technicianForm.invalid" (click)="addTechnician()" *ngIf="addTable" >{{submitBtn}} </button>
+      <button  class="btn btn-secondary" (click)="backToTable('showTable')">Close</button>
+    </div>
+  </form>
+</div>
+  <!-- FORM TECHNICIAN -->

@@ -1,0 +1,151 @@
+<div class="col-sm-9 col-md-12 mt-5">
+    <ng-container *ngIf="!assignDetails" >
+        <div class="alert alert-info text-center" *ngIf="message!==''" role="alert">{{message}}</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Req ID</th>
+                    <th scope="col">Request Info</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Technician</th>
+                    <th scope="col">Request Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of RequestData">
+                    <th scope="row"> {{item.request_id}} </th>
+                    <td> {{item.request_info}} </td>
+                    <td> {{item.requester_name}}   </td>
+                    <td> {{item.requester_add1}}  </td>
+                    <td>  {{item.requester_city}} </td>
+                    <td>  {{item.requester_mobile}} </td>
+                    <td> {{item.assign_tech}}  </td>
+                    <td>  {{item.assign_date | date:"dd-MM-yyyy"}} </td>
+                    <td>
+                        <div class="d-inline">
+                            <button  class="btn btn-warning" name="view" value="View" (click)="openAssign(item.request_id)">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="d-inline">
+                            <input type="hidden" name="id" />
+                            <button type="submit" class=" mx-1 btn btn-secondary" name="delete" value="Delete" (click)="deleteRequest(item.request_id)">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+    <!-- Assign Order Details -->
+    <ng-container *ngIf="assignDetails">
+    <div class="col-sm-12 mt-5  mx-3">
+        <h3 class="text-center">Assigned Work Details</h3>
+        <table class="table table-bordered">
+         <tbody>
+          <tr>
+           <td>Request ID</td>
+           <td>
+            {{singleRequest.request_id}}
+           </td>
+          </tr>
+          <tr>
+           <td>Request Info</td>
+           <td>
+            {{singleRequest.request_info}}
+           </td>
+          </tr>
+          <tr>
+           <td>Request Description</td>
+           <td>
+            {{singleRequest.request_desc}}
+           </td>
+          </tr>
+          <tr>
+           <td>Name</td>
+           <td>
+            {{singleRequest.requester_name}}
+           </td>
+          </tr>
+          <tr>
+           <td>Address Line 1</td>
+           <td>
+            {{singleRequest.requester_add1}}
+           </td>
+          </tr>
+          <tr>
+           <td>Address Line 2</td>
+           <td>
+            {{singleRequest.requester_add2}}
+           </td>
+          </tr>
+          <tr>
+           <td>City</td>
+           <td>
+            {{singleRequest.requester_city}}
+           </td>
+          </tr>
+          <tr>
+           <td>State</td>
+           <td>
+            {{singleRequest.requester_state}}
+           </td>
+          </tr>
+          <tr>
+           <td>Pin Code</td>
+           <td>
+            {{singleRequest.requester_zip}}
+           </td>
+          </tr>
+          <tr>
+           <td>Email</td>
+           <td>
+            {{singleRequest.requester_email}}
+           </td>
+          </tr>
+          <tr>
+           <td>Mobile</td>
+           <td>
+            {{singleRequest.requester_mobile}}
+           </td>
+          </tr>
+          <tr>
+           <td>Assigned Date</td>
+           <td>
+            {{singleRequest.assign_date | date:"dd-MM-yyyy"}}
+           </td>
+          </tr>
+          <tr>
+           <td>Technician Name</td>
+           <td>
+            {{singleRequest.assign_tech}}
+           </td>
+          </tr>
+          <tr>
+           <td>Customer Sign</td>
+           <td></td>
+          </tr>
+          <tr>
+           <td>Technician Sign</td>
+           <td></td>
+          </tr>
+         </tbody>
+        </table>
+        <div class="text-center">
+            <form class='d-print-none d-inline mr-3'>
+                <input class='btn btn-danger' value='Print'
+                    onClick='window.print()'>
+            </form>
+            <form class='d-print-none d-inline'>
+                <input class='btn btn-secondary' value='Close' (click)=closeAssign()>
+            </form>
+        </div>
+       </div>
+    </ng-container>
+    <!-- end assign order details -->
+</div>

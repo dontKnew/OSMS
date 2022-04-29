@@ -1,0 +1,115 @@
+
+<div class="col-sm-8 mb-5">
+  <ng-container *ngIf="RequestData">
+      <div class="card mt-5 mx-5" *ngFor="let item of RequestData">
+          <div class="card-header">
+          Request ID : {{item.request_id}}
+          </div>
+          <div class="card-body">
+              <h5 class="card-title">Request Info : {{item.request_info}} </h5>
+              <p class="card-text"> </p>
+              <p class="card-text">Request Date: {{item.request_date | date:"dd-MM-yyyy"}} </p>
+              <div class="float-right">
+                  <form>
+                      <input class="btn btn-danger mr-3" value="View" (click)="viewRequest(item.request_id)">
+                      <input class="btn btn-secondary" value="Close" (click)="deleteRequest(item.request_id)">
+                  </form>
+              </div>
+          </div>
+      </div>
+  </ng-container>
+ <!-- <div class="alert alert-warning mt-5 col-sm-8" role="alert">
+  <h4 class="alert-heading">Well done!</h4>
+  <p>Aww yeah, you successfully assigned all Requests.</p>
+  <hr>
+  <h5 class="mb-0">No Pending Requests</h5>
+</div>   -->
+</div>
+
+  <div class="col-md-10 col-sm-9 mt-5 jrumbotron">
+    <form [formGroup]="assignWorkForm" (ngSubmit)="assignWork()">
+      <h5 class="text-center">Assign Work Order Request</h5>
+      <div class="form-group">
+        <label for="request_id">Request ID</label>
+        <input type="text" class="form-control"  formControlName="requestid" required 
+          readonly>
+      </div>
+      <div class="form-group">
+        <label for="request_info">Request Info</label>
+        <input type="text" class="form-control"  formControlName="requestinfo" required>
+        <i class="text-danger" *ngIf="requestinfo?.invalid && requestinfo?.touched">Please enter valid information</i>
+      </div>
+      <div class="form-group">
+        <label for="requestdesc">Description</label>
+        <input type="text" class="form-control"  formControlName="requestdesc" required>
+        <i class="text-danger" *ngIf="requestdesc?.invalid && requestdesc?.touched">Please enter valid description</i>
+      </div>
+      <div class="form-group">
+        <label for="requestername">Name</label>
+        <input type="text" class="form-control"  formControlName="requestername" required>
+        <i class="text-danger" *ngIf="requestername?.invalid && requestername?.touched">Please enter valid name</i>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="address1">Address Line 1</label>
+          <input type="text" class="form-control"  formControlName="requesteradd1" required>
+          <i class="text-danger" *ngIf="requesteradd1?.invalid && requesteradd1?.touched">Please enter valid address</i>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="address2">Address Line 2</label>
+          <input type="text" class="form-control"  formControlName="requesteradd2" required>
+          <i class="text-danger" *ngIf="requesteradd2?.invalid && requesteradd2?.touched">Please enter valid address</i>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="requestercity">City</label>
+          <input type="text" class="form-control"  formControlName="requestercity" required>
+          <i class="text-danger" *ngIf="requestercity?.invalid && requestercity?.touched">Please enter valid city</i>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="requesterstate">State</label>
+          <input type="text" class="form-control"  formControlName="requesterstate" required>
+          <i class="text-danger" *ngIf="requesterstate?.invalid && requesterstate?.touched">Please enter valid state</i>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="requesterzip">Zip</label>
+          <input type="text" class="form-control"  formControlName="requesterzip" required>
+          <i class="text-danger" *ngIf="requesterzip?.invalid && requesterzip?.touched">Please enter valid zip code</i>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8">
+          <label for="requesteremail">Email</label>
+          <input type="email" class="form-control"  formControlName="requesteremail" required>
+          <i class="text-danger" *ngIf="requesteremail?.invalid && requesteremail?.touched">Please enter valid email</i>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="requestermobile">Mobile</label>
+          <input type="text" class="form-control"  formControlName="requestermobile" required>
+          <i class="text-danger" *ngIf="requestermobile?.invalid && requestermobile?.touched">Please enter valid phone number</i>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="assigntech">Assign to Technician</label>
+          <input type="text" class="form-control" formControlName="assigntech" required>
+          <i class="text-danger" *ngIf="assigntech?.invalid && assigntech?.touched">Please enter valid tech guy name</i>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputDate">Date</label>
+          <input type="date" class="form-control" formControlName="requestdate" required>
+          <i class="text-danger" *ngIf="requestdate?.invalid && requestdate?.touched">Please enter valid date</i>
+        </div>
+      </div>
+      <div class="float-right">
+        <button type="submit" class="btn btn-success" [disabled]="assignWorkForm.invalid">  {{assignBtn}}  </button>
+        <button type="reset" class="btn btn-secondary" (click)="assignWorkForm.reset()">Reset</button>
+      </div>
+    </form>
+    <!-- below msg display if required fill missing or form submitted success or failed -->
+    <div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''"> {{message}} </div>'
+  </div>
+
+
+<!-- form end -->

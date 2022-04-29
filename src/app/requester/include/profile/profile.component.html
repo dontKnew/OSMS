@@ -1,0 +1,17 @@
+<div class="col-sm-auto mt-5">
+  <div class="alert alert-info mt-2 d-flex justify-content-center" role="alert" *ngIf="message!==''"> {{message}} </div>
+    <form class="mx-5" [formGroup]="changeName" (ngSubmit)="ChangeName()">
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" formControlName="email" readonly required>
+      </div>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" formControlName="name" required>
+      </div>
+      <button type="submit" [disabled]="!changeName.valid" class="btn btn-danger"> {{updateBtn}} </button>
+      <!-- Update status message -->
+    </form>
+  </div>
+
+  

@@ -1,0 +1,72 @@
+<div class="col-sm-9 col-md-10 mt-5">
+    <form class="mx-5" [formGroup]="submitRequest" (ngSubmit)="SubmitRequest()">
+      <div class="alert alert-warning col-sm-12 my-2" role="alert" *ngIf="message!==''"> {{message}}  </div>
+      <div class="form-group">
+        <label for="inputRequestInfo">Request Info</label>
+        <input type="text" class="form-control" placeholder="Request Info"  required formControlName="requestinfo">
+        <i class="text-danger" *ngIf="requestinfo?.invalid && requestinfo?.touched">Please enter valid information</i>
+      </div>
+      <div class="form-group">
+        <label for="inputRequestDescription">Description</label>
+        <input type="text" class="form-control" placeholder="Write Description" required formControlName="requestdesc" >
+        <i class="text-danger" *ngIf="requestdesc?.invalid && requestdesc?.touched">Please enter valid description</i>
+      </div>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" placeholder="Rahul" required formControlName="requestername">
+        <i class="text-danger" *ngIf="requestername?.invalid && requestername?.touched">Please enter valid name</i>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputAddress">Address Line 1</label>
+          <input type="text" class="form-control" placeholder="House No. 123" required formControlName="requesteradd1">
+          <i class="text-danger" *ngIf="requesteradd1?.invalid && requesteradd1?.touched">Please enter valid address</i>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAddress2">Address Line 2</label>
+          <input type="text" class="form-control" placeholder="Railway Colony" required formControlName="requesteradd2">
+          <i class="text-danger" *ngIf="requesteradd2?.invalid && requesteradd2?.touched">Please enter valid address</i>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" required formControlName="requestercity">
+          <i class="text-danger" *ngIf="requestercity?.invalid && requestercity?.touched">Please enter valid city</i>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <input type="text" class="form-control" required formControlName="requesterstate">
+          <i class="text-danger" *ngIf="requesterstate?.invalid && requesterstate?.touched">Please enter valid state</i>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" required formControlName="requesterzip">
+          <i class="text-danger" *ngIf="requesterzip?.invalid && requesterzip?.touched">Please enter valid zip code</i>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" placeholder="example@gmail.com" required formControlName="requesteremail">
+          <i class="text-danger" *ngIf="requesteremail?.invalid && requesteremail?.touched">Please enter valid email</i>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputMobile">Mobile</label>
+          <input type="text" class="form-control" placeholder="917085221377" required formControlName="requestermobile">
+          <i class="text-danger" *ngIf="requestermobile?.invalid && requestermobile?.touched">Please enter valid phone number</i>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputDate">Date</label>
+          <input type="date" class="form-control" placeholder="20/10/2022" required formControlName="requestdate">
+          <i class="text-danger" *ngIf="requestdate?.invalid && requestdate?.touched">Please enter valid date</i>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" [disabled]="!submitRequest.valid" class="btn btn-success mx-1"> {{submitBtn}} </button>
+        <button type="reset" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+      </div>
+    </form>
+    <!-- below msg display if required fill missing or form submitted success or failed -->
+  </div>
