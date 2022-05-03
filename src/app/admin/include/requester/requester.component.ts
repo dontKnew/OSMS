@@ -137,7 +137,7 @@ export class RequesterComponent implements OnInit {
         if(data[1].update[0].status==1){
           // window.scroll({ top: 0, left: 0, behavior: 'smooth'});
           this.message = "Requester Data Updated";
-          // this.requesterForm.reset();
+          this.requesterForm.reset();
           // this.requesterForm.patchValue({"r_password":1, "r_login_id":1});
           this.getRequester();
         }else if(data[1].update[0].status==0){
@@ -167,9 +167,9 @@ export class RequesterComponent implements OnInit {
         this.addBtn = "Submit";
         if(data[1].post[0].status==1){
           this.message = "New Requester Added";
-          // this.requesterForm.reset();
+          this.requesterForm.reset();
           // this.requesterForm.patchValue({"r_password":1, "r_login_id":1})
-          // this.getRequester();
+          this.getRequester();
         }else if(data[1].post[0].status==0){
           this.message = "Requester could not added";
         }else {

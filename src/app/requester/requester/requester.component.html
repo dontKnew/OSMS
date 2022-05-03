@@ -1,6 +1,7 @@
 <!-- Top Navbar -->
-<nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/user">OSMS</a>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0 text-white" routerLink="/user">OSMS</a>
+    <span class="navbar-text m-2 ">Customer's Happiness is our Aim ! </span>
    </nav>
 
    <!-- Side Bar -->
@@ -42,9 +43,9 @@
        </ul>
       </div>
      </nav>
-     <app-submitrequest *ngIf="submitRequest"></app-submitrequest>
-     <app-servicestatus *ngIf="serviceStatus"></app-servicestatus>
-     <app-changepassword *ngIf="changePassword"></app-changepassword>
+     <app-submitrequest *ngIf="submitRequest" class="col-sm-9 col-md-10"></app-submitrequest>
+     <app-servicestatus *ngIf="serviceStatus" class="col-sm-9 col-md-10"></app-servicestatus>
+     <app-changepassword *ngIf="changePassword" class="col-sm-9 col-md-10"></app-changepassword>
      <app-profile *ngIf="profile"></app-profile>
      </div>
     </div>

@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.custom-margin {
+    margin-top: 8vh;
+ }
+ .forgetPassText:hover {
+     color:blue !important;
+     text-decoration:underline;
+     cursor :pointer;
+ }

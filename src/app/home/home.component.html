@@ -7,26 +7,26 @@
     </button>
     <div class="collapse navbar-collapse" id="myMenu">
       <ul class="navbar-nav pl-5 custom-nav">
-        <li class="nav-item"><a routerLink="home" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="home/#Services" class="nav-link">Services</a></li>
-        <li class="nav-item"><a href="home/#registration" class="nav-link">Registration</a></li>
+        <li class="nav-item"><a routerLink="/" fragment="Home"  class="nav-link">Home</a></li>
+        <li class="nav-item"><a routerLink="/" fragment="Services" class="nav-link">Services</a></li>
+        <li class="nav-item"><a routerLink="/" fragment="Registration" class="nav-link">Registration</a></li>
         <li class="nav-item"><a routerLink="/login" class="nav-link">Login</a></li>
-        <li class="nav-item"><a href="home#Contact" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a routerLink="/" fragment="Contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav> <!-- End Navigation -->
 
   <!-- Start Header Jumbotron-->
-  <header class="jumbotron back-image" style="background-image: url(assets/images/Banner1.jpeg);">
+  <header class="jumbotron back-image" style="background-image: url(assets/images/Banner1.jpeg);" id="Home">
     <div class="myclass mainHeading">
       <h1 class="text-uppercase text-dark font-weight-bold">Welcome to OSMS</h1>
       <p class="font-italic">Customer's Happiness is our Aim</p>
       <a routerLink="/login" class="btn btn-success mr-4">Login</a>
-      <a routerLink="home/#registration" class="btn btn-primary mr-4">Sign Up</a>
+      <a routerLink="/" fragment="Registration" class="btn btn-primary mr-4">Sign Up</a>
     </div>
   </header> <!-- End Header Jumbotron -->
 
-  <div class="container">
+  <div class="container" id="Services">
     <!--Introduction Section-->
     <div class="jumbotron">
       <h3 class="text-center">OSMS Services</h3>
@@ -52,7 +52,7 @@
   </div>
   <!--Introduction Section End-->
   <!-- Start Services -->
-  <div class="container text-center border-bottom" id="Services">
+  <div class="container text-center border-bottom">
     <h2>Our Services</h2>
     <div class="row mt-4">
       <div class="col-sm-4 mb-4">
@@ -71,7 +71,8 @@
   </div> <!-- End Services -->
 
   <!-- Start Registration  -->
-  <div class="container pt-5" id="registration" *ngIf="!verifyEmailForm">
+  <div id="Registration"></div>
+  <div class="container pt-5" *ngIf="!verifyEmailForm">
     <h2 class="text-center">Create an Account</h2>
     <div class="row mt-4 mb-4">
       <div class="col-md-6 offset-md-3">
@@ -206,16 +207,20 @@
     <div class="col-md-8">
         <!--Start Contact Us 1st Column-->
         <form  [formGroup]="contactForm" (ngSubmit)="contactFormSubmit()">
-        <input type="text" class="form-control" formControlName="cname" placeholder="Name"><br>
-        <!-- <i class="invaild-feedback text-danger" *ngIf="cname?.invalid && name?.touched" >Please  enter valid name <br></i>  -->
-        <input type="text" class="form-control" formControlName="subject" placeholder="Subject"><br>
-        <!-- <i class="invaild-feedback text-danger" *ngIf="subject?.invalid && subject?.touched" >Please  enter valid subject <br></i>  -->
-        <input type="email" class="form-control" formControlName="cemail" placeholder="E-mail"><br>
-        <!-- <i class="invaild-feedback text-danger" *ngIf="cemail?.invalid && name?.touched" >Please  enter valid email <br></i>  -->
-        <textarea class="form-control" formControlName="body" placeholder="How can we help you?" style="height:150px;"></textarea><br>
-        <!-- <i class="invaild-feedback text-danger" *ngIf="body?.invalid && body?.touched" >Please  enter valid message<br></i>  -->
+        <input type="text" class="form-control" formControlName="cname" placeholder="Name" required>
+        <i class="invaild-feedback text-danger" *ngIf="cname?.invalid && cname?.touched" >Please  enter valid name</i> <br>
+        
+        <input type="text" class="form-control" formControlName="subject" placeholder="Subject" required>
+        <i class="invaild-feedback text-danger" *ngIf="subject?.invalid && subject?.touched" >Please  enter valid subject</i> <br> 
+        
+        <input type="email" class="form-control" formControlName="cemail" placeholder="E-mail" required>
+        <i class="invaild-feedback text-danger" *ngIf="cemail?.invalid && cemail?.touched" >Please  enter valid email </i> <br>
+
+        <textarea class="form-control" formControlName="body" placeholder="How can we help you?" style="height:150px;"></textarea>
+        <i class="invaild-feedback text-danger" *ngIf="body?.invalid && body?.touched" >Please  enter valid message</i> <br>
+
         <div class="alert alert-success col-sm-6 text-center" role="alert" *ngIf="cmessage!==''">{{cmessage}} </div>
-        <button [disabled]="contactForm.invalid" class="btn btn-primary" type="submit" name="submit"> {{contactBtn}} </button><br><br>
+        <button [disabled]="contactForm.invalid" class="btn btn-primary my-2" type="submit" name="submit"> {{contactBtn}} </button><br><br>
         </form>
    </div>
       <!-- End Contact Us 1st Column -->

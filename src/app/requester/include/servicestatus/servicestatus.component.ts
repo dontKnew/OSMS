@@ -54,7 +54,7 @@ export class ServicestatusComponent implements OnInit {
           this.requesterzip = data[1].get[0].data[0].requester_zip; 
           this.requesteremail = data[1].get[0].data[0].requester_email; 
           this.requestermobile = data[1].get[0].data[0].requester_mobile; 
-          this.requestdate = data[1].get[0].data[0].request_date; 
+          this.requestdate = data[1].get[0].data[0].assign_date; 
           this.showStatus = true; 
           this.searchForm.reset();
         }else if(data[1].get[0].status==0){

@@ -1,4 +1,5 @@
-<div class="mb-3 text-center mt-5" style="font-size: 30px;">
+<ng-container  *ngIf="loginTable">
+  <div class="mb-3 text-center mt-5" style="font-size: 30px;">
     <i class="fas fa-stethoscope"></i>
     <span>Online Maintenance Managment System</span>
   </div>
@@ -21,11 +22,97 @@
             <i class="fas fa-key"></i><label for="pass" class="pl-2 font-weight-bold">Password</label><input type="password"
               class="form-control" placeholder="Password" formControlName="password" required>
           </div>
+          <span class="text-secondary mb-2 mt-1 forgetPassText courser-pointer" (click)="backToTable('emailTable')">
+            <strong>
+              Forget your password ?
+            </strong>
+          </span>
           <button type="submit" class="btn btn-outline-danger mt-3 btn-block shadow-sm font-weight-bold" [disabled]="loginForm.invalid"> {{loginBtn}} </button>
-          
         </form>
         <div class="text-center"><a class="btn btn-info mt-3 shadow-sm font-weight-bold" routerLink="/home">Back
             to Home</a></div>
       </div>
     </div>
   </div>
+</ng-container>
+
+<ng-container *ngIf="emailTable">
+  <div class="mb-3 text-center mt-5" style="font-size: 30px;">
+    <i class="fas fa-stethoscope"></i>
+    <span>Online Maintenance Managment System</span>
+  </div>
+  <p class="text-center" style="font-size: 20px;"> <i class="fas fa-user-secret text-danger"></i> <span>Admin
+      Forget Password Area</span>
+  </p>
+  <div class="container-fluid mb-5">
+    <div class="row justify-content-center custom-margin">
+      <div class="col-sm-8 col-md-4">
+        <form class="shadow-lg p-4" [formGroup]="checkEmailForm" (ngSubmit)="sentOTP()">
+           <div class="alert alert-info mt-2 d-flex justify-content-center" role="alert" *ngIf="message!==''">
+            {{message}} </div> 
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <label for="email" class="pl-2 font-weight-bold">Email</label>
+            <input type="email" class="form-control" placeholder="Email" formControlName="email1" required>
+            <i class="invaild-feedback text-danger" *ngIf="email1?.invalid && email1?.touched">Please enter valid email</i>
+          </div>
+          <button type="submit" [disabled]="!checkEmailForm.valid"
+            class="btn btn-outline-warning mt-3 btn-block shadow-sm font-weight-bold mb-2"> {{emailVerifyBtn}}</button>
+            <a class="text-danger my-2  forgetPassText courser-pointer" href="mailto:israfil123.sa@gmail.com">
+              Having trouble ? try another way!
+            </a>
+        </form>
+        
+        <div class="text-center"><a class="btn btn-info mt-3 shadow-sm font-weight-bold" routerLink="/login">Back
+            to Login</a></div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="verifyTable">
+  <div class="mb-3 text-center mt-5" style="font-size: 30px;">
+    <i class="fas fa-stethoscope"></i>
+    <span>Online Maintenance Managment System</span>
+  </div>
+  <p class="text-center" style="font-size: 20px;"> <i class="fas fa-user-secret text-danger"></i> <span>Admin
+      Change Password Area</span>
+  </p>
+  <div class="container-fluid mb-5">
+    <div class="row justify-content-center custom-margin">
+      <div class="col-sm-6 col-md-4">
+        <form class="shadow-lg p-4" [formGroup]="verifyForm" (ngSubmit)="verifyOTP()">
+          <div class="alert alert-info mt-2 d-flex justify-content-center" role="alert" *ngIf="message!==''">
+            {{message}} </div>
+
+          <div class="form-group">
+            <i class="fas fa-user"></i><label for="email" class="pl-2 font-weight-bold">Email</label>
+            <input type="email" class="form-control" placeholder="Email" formControlName="email2" readonly>
+          </div>
+
+          <div class="form-group">
+            <i class="fas fa-user"></i><label for="otp" class="pl-2 font-weight-bold">Enter OTP</label>
+            <input type="text" class="form-control" placeholder="OTP" formControlName="otp2" required>
+            <small class="form-text">We've sent an six digit OTP</small>
+            <i class="invaild-feedback text-danger" *ngIf="otp2?.invalid && otp2?.touched">Please enter valid OTP</i>
+          </div>
+
+          <div class="form-group">
+            <i class="fas fa-key"></i><label for="pass" class="pl-2 font-weight-bold">New Password</label><input
+              type="password" class="form-control" placeholder="New Password" formControlName="password2" required>
+            <i class="invaild-feedback text-danger" *ngIf="password2?.invalid && password2?.touched">Please enter valid
+              password</i>
+          </div>
+
+          <a class="text-danger my-2  forgetPassText courser-pointer" href="mailto:israfil123.sa@gmail.com">
+            Having trouble ? try another way!
+          </a>
+          <button type="submit" [disabled]="verifyForm.invalid" class="btn btn-outline-warning mt-3 btn-block shadow-sm font-weight-bold"> {{verifyBtn}} </button>
+        </form>
+        <div class="text-center"><a class="btn btn-info mt-3 shadow-sm font-weight-bold" (click)="backToTable('loginTable')">Back
+            to Login</a></div>
+      </div>
+    </div>
+  </div>
+</ng-container>

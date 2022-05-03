@@ -1,6 +1,7 @@
-<div class="col-sm-12 col-md-12 mt-5 text-center" *ngIf="showTable">
+<ng-container *ngIf="showTable">
+  <div class="mt-5 text-center" >
     <p class=" bg-dark text-white p-2">Product/Parts Details</p>
-    <div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
+    <div class="alert alert-warning mt-2 text-center" role="alert" *ngIf="message!==''" > {{message}}</div>
     <table class="table">
       <thead>
         <tr>
@@ -21,18 +22,13 @@
             <td>{{item.pdop}}</td>
             <td>{{item.pava}}</td>
             <td>{{item.ptotal}}</td>
-            <td>{{item.poriginalcost}}</td>
-            <td>{{item.pava}}</td>
-            <td>
+            <td>{{item.poriginalcost | currency:"INR" }}</td>
+            <td>{{item.psellingcost | currency:"INR" }}</td>
           <td>
-                 <button  class="btn btn-info" (click)="viewAssets(item.pid)"><i class="fas fa-pen"></i></button>
-            
-            
-                <button  class="btn btn-secondary" (click)="deleteAssets(item.pid)"><i class="far fa-trash-alt"></i></button>
-            
-        
-                <button class="btn btn-success" (click)="issueAssets(item.pid)"><i class="fas fa-handshake"></i></button>
-        
+              <button  class="btn btn-info" (click)="viewAssets(item.pid)"><i class="fas fa-pen"></i></button>
+              <button  class="btn btn-secondary m-1" (click)="deleteAssets(item.pid)"><i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-success" (click)="issueAssets(item.pid)"><i class="fas fa-handshake"></i></button>
+
           </td>
         </tr>
     </tbody>
@@ -41,112 +37,119 @@
     <button class="btn btn-danger box" (click)="backToTable('addTable')"><i class="fas fa-plus fa-2x"></i></button>
   </div>
   </div>
-  
+</ng-container>
 
 
+<ng-container *ngIf="doubleAssetsTable">
   <!-- EDIT && ADD ASSETS -->
-  <div class="col-sm-12 col-md-12 mt-5  mx-3 jumbotron" *ngIf="doubleAssetsTable">
+  <div class="mt-5  mx-3 jumbotron" >
     <h3 class="text-center" *ngIf="editTable">Update Product Details</h3>
     <h3 class="text-center" *ngIf="addTable">Add New Assets</h3>
+    <div class="alert alert-primary mt-2 text-center" role="alert" *ngIf="message!==''" > {{message}}</div>
     <form [formGroup]="assetsForm">
-      <div class="form-group" *ngIf="editTable">
+      <div class="form-group">
         <label for="pid">Product ID</label>
-        <input type="text" class="form-control" formContrlName="pid" required readonly>
-        <span> Hello </span>
+        <input type="text" class="form-control" formControlName="pid" required readonly>
       </div>
       <div class="form-group">
         <label for="pname">Name</label>
-        <input type="text" class="form-control" formContrlName="pname" required>
+        <input type="text" class="form-control" formControlName="pname" required>
         <i class="text-danger" *ngIf="pname?.invalid && pname?.touched">Please enter valid product name</i>
       </div>
       <div class="form-group">
         <label for="pdop">DOP</label>
-        <input type="date" class="form-control" formContrlName="pdop" required>
+        <input type="date" class="form-control" formControlName="pdop" required>
         <i class="text-danger" *ngIf="pdop?.invalid && pdop?.touched">Please enter valid product date</i>
       </div>
       <div class="form-group">
         <label for="pava">Available</label>
-        <input type="text" class="form-control" formContrlName="pava" required>
+        <input type="text" class="form-control" formControlName="pava" required>
         <i class="text-danger" *ngIf="pava?.invalid && pava?.touched">Please enter valid pava</i>
       </div>
       <div class="form-group">
         <label for="ptotal">Total</label>
-        <input type="text" class="form-control" formContrlName="ptotal" required>
+        <input type="text" class="form-control" formControlName="ptotal" required>
         <i class="text-danger" *ngIf="ptotal?.invalid && ptotal?.touched">Please enter valid product total amount</i>
       </div>
       <div class="form-group">
         <label for="poriginalcost">Original Cost Each</label>
-        <input type="text" class="form-control" formContrlName="poriginalcost" required>
+        <input type="text" class="form-control" formControlName="poriginalcost" required>
         <i class="text-danger" *ngIf="poriginalcost?.invalid && poriginalcost?.touched">Please enter valid cost</i>
       </div>
       <div class="form-group">
         <label for="pava">Selling Price Each</label>
-        <input type="text" class="form-control" formContrlName="pava" required>
-        <i class="text-danger" *ngIf="pava?.invalid && pava?.touched">Please enter valid selling cost</i>
+        <input type="text" class="form-control" formControlName="psellingcost" required>
+        <i class="text-danger" *ngIf="psellingcost?.invalid && psellingcost?.touched">Please enter valid selling cost</i>
       </div>
       <div class="text-center">
-        <button  [disabled]="!assetsForm.valid" class="btn btn-danger" (click)="updateAssets()" *ngIf="editTable"> {{updateBtn}} </button>
-        <button  [disabled]="!assetsForm.valid" class="btn btn-danger" (click)="addAssets()" *ngIf="addTable"> {{addBtn}} </button>
-        <button class="btn btn-secondary" (click)="backToTable('showTable')" >Close </button>b
+        <button  [disabled]="!assetsForm.valid" class="btn btn-danger mx-1" (click)="updateAssets()" *ngIf="editTable"> {{updateBtn}} </button>
+        <button  [disabled]="!assetsForm.valid" class="btn btn-success" (click)="addAssets()" *ngIf="addTable"> {{addBtn}} </button>
+        <button class="btn btn-secondary m-1" (click)="backToTable('showTable')" >Close </button>
       </div>
-      <div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
     </form>
   </div>
   <!-- END EDIT ASSETS -->
+</ng-container>
 
-  <!-- SELL PRODUCT -->
-  <div class="col-sm-12 col-md-12 mt-5  mx-3 jumbotron" *ngIf="sellTable">
-    <h3 class="text-center">Customer Bill</h3>
-    <form [formGroup]="assetsSellForm" (ngSubmit)="sellAssets()">
+
+
+<ng-container *ngIf="sellTable">
+  <!-- EDIT && ADD ASSETS -->
+  <div class="mt-5  mx-3 jumbotron" >
+    <h3 class="text-center"> Customer Bill </h3>
+    <div class="alert alert-primary mt-2 text-center" role="alert" *ngIf="message!==''" > {{message}}</div>
+    <form [formGroup]="salesForm">
       <div class="form-group">
         <label for="pid">Product ID</label>
-        <input type="text" class="form-control" fromControlName="pid1" required readonly>
+        <input type="text" class="form-control" formControlName="pid1" required readonly>
       </div>
       <div class="form-group">
         <label for="cname">Customer Name</label>
-        <input type="text" class="form-control" fromControlName="cname" required>
+        <input type="text" class="form-control" formControlName="cname1" required>
         <i class="text-danger" *ngIf="cname1?.invalid && cname1?.touched">Please enter valid name</i>
       </div>
       <div class="form-group">
-        <label for="cadd">Customer Address</label>
-        <input type="text" class="form-control" fromControlName="cadd1" required>
-        <i class="text-danger" *ngIf="cadd1?.invalid && cadd1?.touched">Please enter valid address</i>
+        <label for="caddress">Customer Address</label>
+        <input type="text" class="form-control" formControlName="caddress1" required>
+        <i class="text-danger" *ngIf="caddress1?.invalid && caddress1?.touched">Please enter valid address</i>
       </div>
       <div class="form-group">
-        <label for="pname">Product Name</label>
-        <input type="text" class="form-control" fromControlName="pname1" required >
+        <label for="pname"> Product Name</label>
+        <input type="text" class="form-control" formControlName="pname1" required readonly>
         <i class="text-danger" *ngIf="pname1?.invalid && pname1?.touched">Please enter valid product name</i>
       </div>
       <div class="form-group">
         <label for="pava">Available</label>
-        <input type="text" class="form-control" fromControlName="pava1" required readonly>
-        <i class="text-danger" *ngIf="pava1?.invalid && pava1?.touched">Please enter valid pava</i>
+        <input type="text" class="form-control" formControlName="pava1" required readonly>
+        <i class="text-danger" *ngIf="pava1?.invalid && pava1?.touched">Please enter valid items available numbers</i>
       </div>
       <div class="form-group">
-        <label for="pquantity">Quantity</label>
-        <input type="text" class="form-control" fromControlName="pquantity1" required>
-        <i class="text-danger" *ngIf="pquantity1?.invalid && pquantity1?.touched">Please enter valid product quantity</i>
+        <label for="ptotal">Quantity</label>
+        <input type="text" class="form-control" formControlName="pquantity1" (keyup)="salesPrice()" required>
+        <i class="text-danger" *ngIf="pquantity1?.invalid && pquantity1?.touched">Please enter valid product quantity number</i>
+        <i class="text-warning" *ngIf="alert!==''"> <br> {{alert}}</i>
       </div>
       <div class="form-group">
-        <label for="pava">Price Each</label>
-        <input type="text" class="form-control" fromControlName="psellingcost1" required>
-        <i class="text-danger" *ngIf="psellingcost1?.invalid && psellingcost1?.touched">Please enter valid cost</i>
+        <label for="poriginalcost">Price Each </label>
+        <input type="text" class="form-control" formControlName="psellingcost1" required readonly>
+        <i class="text-danger" *ngIf="psellingcost1?.invalid && psellingcost1?.touched">Please enter valid price item </i>
       </div>
       <div class="form-group">
-        <label for="totalcost">Total Price</label>
-        <input type="text" class="form-control" fromControlName="totalcost1" required>
-        <i class="text-danger" *ngIf="totalcost1?.invalid && totalcost1?.touched">Please enter valid cost</i>
+        <label for="pava">Total Price</label>
+        <input type="text" class="form-control" formControlName="totalcost1" required readonly>
+        <i class="text-danger" *ngIf="totalcost1?.invalid && totalcost1?.touched">Please enter valid total cost amount</i>
       </div>
-      <div class="form-group col-md-4">
-        <label for="inputDate">Date</label>
-        <input type="date" class="form-control" fromControlName="selldate1" required>
-        <i class="text-danger" *ngIf="selldate1?.invalid && selldate1?.touched">Please enter valid date</i>
-      </div>
+      <!-- <div class="form-group">
+        <label for="pdop">DOP</label>
+        <input type="date" class="form-control" formControlName="pdop1" required readonly>
+        <i class="text-danger" *ngIf="pdop1?.invalid && pdop1?.touched">Please enter valid product date</i>
+      </div> -->
       <div class="text-center">
-        <button type="submit" [disabled]="assetsSellForm.invalid" class="btn btn-danger" (click)="sellAssets()"> {{sellBtn}}</button>
-        <button class="btn btn-secondary" (click)="backToTable('showTable')">Close</button>
+        <button  [disabled]="!salesForm.valid" class="btn btn-warning" (click)="saleAssets()"> {{sellBtn}} </button>
+        <button class="btn btn-secondary m-1" (click)="backToTable('showTable')" >Close </button>
       </div>
-      <div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
     </form>
   </div>
-  <!-- END SELL PRODUCT -->
+  <!-- END EDIT ASSETS -->
+</ng-container>
+

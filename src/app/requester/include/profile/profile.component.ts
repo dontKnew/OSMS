@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   updateBtn:string = "Update";
   
   constructor(public loginService:LoginServiceService, private database:DatabaseService) { 
+    this.loginService.userData();
     this.changeName.setValue({"name":this.loginService.userName, "email":this.loginService.userEmail});
   }
 
@@ -53,7 +54,6 @@ export class ProfileComponent implements OnInit {
 }
 
   ngOnInit(): void {
-
     console.warn("profile component loaded");
   }
 

@@ -11,18 +11,14 @@
       <th scope="col">Action</th>
      </tr>
     </thead>
-    <tbody *ngFor="let item of requesterData">
+    <tbody>
      <tr *ngFor="let item of requesterData">
       <th scope="row">{{item.r_login_id}}</th>
       <td>{{item.r_name}}</td>
       <td>{{item.r_email}}</td>
       <td>
-          <form class="d-inline"> 
-          <button class="btn btn-info mr-3" (click)="viewRequester(item.r_login_id)" value="View"> <i class="fas fa-pen"></i></button>
-        </form>  
-        <form  class="d-inline">
-          <button class="btn btn-secondary" (click)="deleteRequester(item.r_login_id)" value="Delete"><i class="far fa-trash-alt"></i></button>
-        </form>
+          <button class="btn btn-info" (click)="viewRequester(item.r_login_id)" value="View"> <i class="fas fa-pen"></i></button>
+          <button class="btn btn-secondary m-1" (click)="deleteRequester(item.r_login_id)" value="Delete"><i class="far fa-trash-alt"></i></button>
     </td>
     </tr>
   
@@ -35,9 +31,9 @@
   </div>
 
   <div class="col-sm-12 col-md-12 mt-5  mx-3 jumbotron" *ngIf="doubleTable">
-    <div class="alert alert-info col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
     <h3 class="text-center" *ngIf="editTable">Update Requester Details</h3>
     <h3 class="text-center" *ngIf="addTable">New Requester Details</h3>
+    <div class="alert alert-warning text-center mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
     <form [formGroup]="requesterForm">
       <div class="form-group" *ngIf="editTable">
         <label for="r_login_id">Requester ID</label>
@@ -62,7 +58,7 @@
       <div class="text-center">
         <button  class="btn btn-danger"  [disabled]="requesterForm.invalid" (click)="updateRequester()" *ngIf="editTable"> {{updateBtn}} </button>
         <button  class="btn btn-success"  [disabled]="requesterForm.invalid" (click)="addRequester()" *ngIf="addTable"> {{addBtn}} </button>
-        <button (click)="backToTable('showTable')" class="btn btn-secondary">Close</button>
+        <button (click)="backToTable('showTable')" class="btn btn-secondary m-1">Close</button>
       </div>
     </form>
     <div>

@@ -40,6 +40,7 @@ export class ChangepasswordComponent implements OnInit {
             this.message = data.message;
           }else if(data[0].update[0].status == 1){
             this.message = "Password changed successfully";
+            this.changePassForm.reset();
             this.loginService.userData();
           }else if(data[0].update[0].status == 0){
             this.message = data.message;

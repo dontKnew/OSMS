@@ -51,7 +51,7 @@ export class RequesterComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.userData();
-    this.Profile();
+    // this.Profile();
     if(this.loginService.isLogin()){
       this.router.navigate(['/user']);
     }else {

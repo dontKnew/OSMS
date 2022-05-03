@@ -11,6 +11,7 @@ import { formatDate } from '@angular/common';
 })
 export class RequestsComponent implements OnInit {
   
+  noData:boolean = false;
   message:string = '';
   RequestData:any | boolean;
   assignDetails:boolean = false;
@@ -96,9 +97,8 @@ export class RequestsComponent implements OnInit {
       this.assignBtn = "Submit";
       if(data[1].post[0].status==1){
         // window.scroll({ top: 0, left: 0, behavior: 'smooth'});
-        // this.message = "Work Assigned Successfully and Your customer Request_Id : "+data[1].post[0].lastId;
-        this.deleteRequest(this.assignWorkForm.value.requestid);
-        this.message = "Work Assigned Successfully";
+          this.message = "Work Assigned Successfully";
+          this.deleteRequest(this.assignWorkForm.value.requestid);
       }else if(data[1].post[0].status==0){
         this.message = "Unable to submit request";
       }else {
@@ -121,6 +121,7 @@ export class RequestsComponent implements OnInit {
       // console.warn(data);
       if(data[1].get[0].data== 0){
         this.RequestData = false;
+        this.noData = true;
       }else if(data[1].get[0].status == 1){
         this.RequestData = data[1].get[0].data;
       }else {
@@ -189,8 +190,29 @@ export class RequestsComponent implements OnInit {
       this.message = '';
     }, 3000);
   }
+
+  technicianData:any;
+
+  getTechnician(){
+    this.database.getTechnician().subscribe({
+    next:data=>{
+      console.warn(data);
+      if(data[1].get[0].data == 0){
+        this.technicianData = false;
+      }else if(data[1].get[0].status == 1){
+        this.technicianData = data[1].get[0].data;
+      }else {
+        this.message = "Server response error";
+      }
+    }, 
+    error:error=>{
+      this.message = error.message;
+    }
+  })
+}
   
   ngOnInit(): void {
     this.getRequest();
+    this.getTechnician();
   }
 }

@@ -1,6 +1,6 @@
-<div class="col-sm-9 col-md-10 mt-5 text-center" *ngIf="showTable">
+<div class="mt-5 text-center" *ngIf="showTable">
     <!--Table-->
-    <div class="alert alert-info col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
+    <div class="alert alert-info text-center" role="alert" *ngIf="message!==''"  > I love {{message}}</div>
     <p class=" bg-dark text-white p-2">List of Technicians</p>
     <table class="table">
     <thead>
@@ -22,15 +22,9 @@
       <td>{{item.empMobile}}</td>
       <td>{{item.empEmail}}</td>
       <td>
-          <form class="d-inline">
-           <button  class="btn btn-info mr-3" (click)="viewTechnician(item.empid)" value="View">
-               <i class="fas fa-pen"></i>
-            </button>
-        </form>  
-        <form  class="d-inline">
-            <button  class="btn btn-secondary" (click)="deleteTechnician(item.empid)" value="Delete"><i class="far fa-trash-alt"></i></button>
-        </form>
-    </td>
+      <button  class="btn btn-info m-1" (click)="viewTechnician(item.empid)" value="View"> <i class="fas fa-pen"></i></button>
+      <button  class="btn btn-secondary" (click)="deleteTechnician(item.empid)" value="Delete"><i class="far fa-trash-alt"></i></button>
+      </td>
      </tr>
    </tbody>
    </table>
@@ -39,12 +33,12 @@
        <i class="fas fa-plus fa-2x"></i>
      </button>
   </div>
+  </div>
 
   <!-- FORM TECHNICIAN -->
   <div class="col-sm-12 mt-5  mx-3 jumbotron" *ngIf="doubleTable">
     <h3 class="text-center" *ngIf="editTable">Update Technician Details</h3>
     <h3 class="text-center" *ngIf="addTable">New Technician Details</h3>
-  <div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert" *ngIf="message!==''" > {{message}}</div>
   <form [formGroup]="technicianForm">
     <div class="form-group" *ngIf="editTable">
       <label for="empId">Emp ID</label>
@@ -71,10 +65,11 @@
       <input type="email" class="form-control"  formControlName="empEmail" required>
       <i class="text-danger" *ngIf="empEmail?.invalid && empEmail?.touched">Please enter valid email</i>
     </div>
+    <div class="alert alert-danger text-center" role="alert" *ngIf="message!==''" > {{message}}</div>
     <div class="text-center">
       <button  class="btn btn-danger"  [disabled]="technicianForm.invalid" (click)="updateTechnician()" *ngIf="editTable">{{updateBtn}} </button>
       <button  class="btn btn-success"  [disabled]="technicianForm.invalid" (click)="addTechnician()" *ngIf="addTable" >{{submitBtn}} </button>
-      <button  class="btn btn-secondary" (click)="backToTable('showTable')">Close</button>
+      <button  class="btn btn-secondary ml-1" (click)="backToTable('showTable')">Close</button>
     </div>
   </form>
 </div>

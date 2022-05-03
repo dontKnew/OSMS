@@ -19,6 +19,10 @@ export class AdminComponent implements OnInit {
   workreport:boolean = false;
   changepass:boolean = false;
 
+  totalRequester:number = 0;
+  totalAssigned:number = 0;
+  totalTechnician:number = 0;
+
   requesterData:any | boolean;
   message:string = '';
 
@@ -120,12 +124,48 @@ export class AdminComponent implements OnInit {
 
   getRequester(){
     this.database.getRequester().subscribe({
+      next:data=>{
+        console.warn(data[1].get[0].data);
+        if(data[1].get[0].data== 0){
+          this.requesterData = false;
+        }else if(data[1].get[0].status == 1){
+          this.requesterData = data[1].get[0].data;
+          this.totalRequester = data[1].get[0].totalRow;
+          // console.warn(data[1].get[0].data)
+        }else {
+          this.message = "Server response error";
+        }
+      }, 
+      error:error=>{
+        this.message = error.message;
+      }
+    })
+  }
+
+  getTechnician(){
+    this.database.getTechnician().subscribe({
+      next:data=>{
+        // console.warn("yoru tech", data);
+        if(data[1].get[0].data == 0){
+        }else if(data[1].get[0].status == 1){
+          this.totalTechnician = data[1].get[0].totalRow;
+        }else {
+          this.message = "Server response error";
+        }
+      }, 
+      error:error=>{
+        this.message = error.message;
+      }
+    })
+  }
+
+  getRequest(){
+    this.database.getAssignWork().subscribe({
     next:data=>{
-      // console.warn(data);
+      // console.warn("assign work", data);
       if(data[1].get[0].data== 0){
-        this.requesterData = false;
       }else if(data[1].get[0].status == 1){
-        this.requesterData = data[1].get[0].data;
+        this.totalAssigned = data[1].get[0].totalRow;
       }else {
         this.message = "Server response error";
       }
@@ -137,9 +177,11 @@ export class AdminComponent implements OnInit {
 }
 
   ngOnInit(): void {
-    this.showTab("dashboard");
+    this.showTab("requester");
     this.getRequester();
     this.loginSerivce.adminData();
+    this.getRequest();
+    this.getTechnician();
   }
 
 }

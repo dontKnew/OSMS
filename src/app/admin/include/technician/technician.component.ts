@@ -16,7 +16,7 @@ export class TechnicianComponent implements OnInit {
   showTable:boolean = false;
   editTable:boolean = false;
   addTable:boolean = false;
-  doubleTable:boolean = false;
+  doubleTable:boolean = true;
 
   updateBtn:string = "Update";
   submitBtn:string = "Submit";
@@ -40,6 +40,7 @@ export class TechnicianComponent implements OnInit {
       this.editTable = false;
       this.addTable = true;
       this.doubleTable = true;
+      console.warn("am clicked");
     }
 }
 
@@ -69,6 +70,8 @@ export class TechnicianComponent implements OnInit {
           this.message = "One technician has been deleted";
           this.getTechnician();
           this.message = "technician could not delete";
+        }if(data[1].delete[0].status == 0){
+          this.message = "technician could not delete";
         }else {
           this.message = "Server response error";
         }
@@ -81,14 +84,14 @@ export class TechnicianComponent implements OnInit {
       this.message = '';
     }, 3000);
   }
+
   technicianForm = new  FormGroup({
     "empid":new FormControl("0", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
     "empName":new FormControl("", [Validators.required]),
     "empCity":new FormControl("", [Validators.required]),
-    "empMobile":new FormControl("", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+    "empMobile":new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(15), Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
     "empEmail":new FormControl("", [Validators.required, Validators.email])
   })
-
 
   get empid(){
     return this.technicianForm.get("empid");
@@ -119,7 +122,10 @@ export class TechnicianComponent implements OnInit {
         this.submitBtn = "Submit";
         if(data[1].post[0].status==1){
           // window.scroll({ top: 0, left: 0, behavior: 'smooth'});
+          this.getTechnician();
           this.message = "technician added";
+          this.technicianForm.reset();
+          this.technicianForm.patchValue({"empid":0});
         }else if(data[1].post[0].status==0){
           this.message = "technician Data could not add";
         }else {
@@ -179,6 +185,9 @@ export class TechnicianComponent implements OnInit {
         if(data[1].update[0].status==1){
           // window.scroll({ top: 0, left: 0, behavior: 'smooth'});
           this.message = "technician Data Updated";
+          this.getTechnician();
+          this.technicianForm.reset();
+          this.technicianForm.patchValue({"empid":0});
         }else if(data[1].update[0].status==0){
           this.message = "technician Data could not updated";
         }else {

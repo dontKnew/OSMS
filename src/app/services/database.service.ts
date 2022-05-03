@@ -25,6 +25,18 @@ export class DatabaseService {
     }));
   }
 
+  sentOTP(data:any){
+    return this.http.post<any>(this.url+"?sentOTP=1",data).pipe(map((res:any)=>{
+      return res;
+    }));
+  }
+
+  changePass(data:any){
+    return this.http.post<any>(this.url+"?changePass=1",data).pipe(map((res:any)=>{
+      return res;
+    }));
+  }
+
   sentMail(data:any){
     return this.http.post<any>(this.url+"?sentMail=1",data).pipe(map((res:any)=>{
       return res;
@@ -78,8 +90,6 @@ export class DatabaseService {
       return res;
     }));
   }
-
-
 
 
   // ADMIN API

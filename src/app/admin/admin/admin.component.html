@@ -1,6 +1,7 @@
 <!-- Top Navbar -->
-<nav class="navbar navbar-dark fixed-top bg-danger p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" (click)="showTab('dashboard')">OSMS</a>
+<nav class="navbar navbar-dark fixed-top bg-dark p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0 text-white" (click)="showTab('dashboard')">OSMS</a>
+    <span class="navbar-text m-2 ">Customer's Happiness is our Aim</span>
    </nav>
    <!-- Side Bar -->
    <div class="container-fluid mb-5" style="margin-top:40px;">
@@ -78,12 +79,12 @@
         <div class="row mx-5 text-center">
           <div class="col-sm-4 mt-5">
             <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-              <div class="card-header">Requests Received</div>
+              <div class="card-header">Total Requests </div>
               <div class="card-body">
                 <h4 class="card-title">
-                  10
+                  {{totalRequester}}
                 </h4>
-                <a class="btn text-white" href="request.php">View</a>
+                <a class="btn text-white" (click)="showTab('requester')">View</a>
               </div>
             </div>
           </div>
@@ -92,9 +93,9 @@
               <div class="card-header">Assigned Work</div>
               <div class="card-body">
                 <h4 class="card-title">
-                  2
+                  {{totalAssigned}}
                 </h4>
-                <a class="btn text-white" href="work.php">View</a>
+                <a class="btn text-white" (click)="showTab('work')">View</a>
               </div>
             </div>
           </div>
@@ -103,9 +104,9 @@
               <div class="card-header">No. of Technician</div>
               <div class="card-body">
                 <h4 class="card-title">
-                  50
+                  {{totalTechnician}}
                 </h4>
-                <a class="btn text-white" href="technician.php">View</a>
+                <a class="btn text-white" (click)="showTab('technician')">View</a>
               </div>
             </div>
           </div>
@@ -134,14 +135,16 @@
 
 
       <!-- requester  -->
-      <app-assets *ngIf="assets"></app-assets>
-      <app-changepassword *ngIf="changepass"></app-changepassword>
-      <app-requester *ngIf="requester"></app-requester>
-      <app-requests *ngIf="requests"></app-requests>
-      <app-sellreport *ngIf="sellreport"></app-sellreport>
-      <app-technician *ngIf="technician"></app-technician>
-      <app-workorder *ngIf="work"></app-workorder>
-      <app-workreport *ngIf="workreport"></app-workreport>
+      <div class="col-sm-9 col-md-10">
+        <app-workorder *ngIf="work"   ></app-workorder>
+        <app-assets *ngIf="assets"  ></app-assets>
+        <app-changepassword *ngIf="changepass"  ></app-changepassword>
+        <app-requester *ngIf="requester"  ></app-requester>
+        <app-requests *ngIf="requests"  ></app-requests>
+        <app-sellreport *ngIf="sellreport"  ></app-sellreport>
+        <app-technician *ngIf="technician"  ></app-technician>
+        <app-workreport *ngIf="workreport"  ></app-workreport>
+      </div>
      <!-- end content -->
 
      </div>

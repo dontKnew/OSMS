@@ -12,7 +12,9 @@ export class LoginServiceService {
     userId:number | boolean= false;
     
   constructor(private database:DatabaseService){
+    if(this.isLogin()){
       this.userData();
+    }
   }
 
   logout(){
@@ -41,7 +43,6 @@ export class LoginServiceService {
   userData(){
     this.database.getUser(localStorage.getItem("userEmail")).subscribe({
       next:response=>{
-        // console.warn(response[1].get[0].data[0].r_password);
         this.userName = response[1].get[0].data[0].r_name;
         this.userEmail = response[1].get[0].data[0].r_email;
         this.userId = response[1].get[0].data[0].r_login_id;

@@ -66,8 +66,9 @@ export class HomeComponent implements OnInit {
       this.message = "";
     }, 3000);
   }
+  
   verifyUserForm = new FormGroup({
-    "email": new FormControl("", [Validators.email]),
+    "email": new FormControl("", [Validators.email, Validators.required]),
     "OTP": new FormControl("", [Validators.required]),
   })
   get OTP(){
@@ -110,18 +111,19 @@ export class HomeComponent implements OnInit {
     "subject": new FormControl("", [Validators.required]),
     "body": new FormControl("", [Validators.required]),
   })
-  // get cname(){
-  //   return this.contactForm.get("cname");
-  // }
-  // get cemail(){
-  //   return this.contactForm.get("cemail");
-  // }
-  // get subject(){
-  //   return this.contactForm.get("subject");
-  // }
-  // get body(){
-  //   return this.contactForm.get("body");
-  // }
+  
+  get cname(){
+    return this.contactForm.get("cname");
+  }
+  get cemail(){
+    return this.contactForm.get("cemail");
+  }
+  get subject(){
+    return this.contactForm.get("subject");
+  }
+  get body(){
+    return this.contactForm.get("body");
+  }
   
   contactEmail!:string;
   formContactData = new FormData();
