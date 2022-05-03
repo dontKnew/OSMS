@@ -2,16 +2,16 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark pl-5 fixed-top">
     <a href="index.php" class="navbar-brand">OSMS</a>
     <span class="navbar-text">Customer's Happiness is our Aim</span>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
+    <button type="button" class="navbar-toggler mb-2" data-toggle="collapse" data-target="#myMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="myMenu">
       <ul class="navbar-nav pl-5 custom-nav">
-        <li class="nav-item"><a routerLink="/" fragment="Home"  class="nav-link">Home</a></li>
-        <li class="nav-item"><a routerLink="/" fragment="Services" class="nav-link">Services</a></li>
-        <li class="nav-item"><a routerLink="/" fragment="Registration" class="nav-link">Registration</a></li>
-        <li class="nav-item"><a routerLink="/login" class="nav-link">Login</a></li>
-        <li class="nav-item"><a routerLink="/" fragment="Contact" class="nav-link">Contact</a></li>
+        <li class="nav-item rounded" (click)="activeRoute()" [ngClass]="{'active':activeHome}"><a routerLink="/" fragment="Home" class="nav-link">Home</a></li>
+        <li class="nav-item rounded" (click)="activeRoute()" [ngClass]="{'active':activeService}"><a routerLink="/" fragment="Services" class="nav-link">Services</a></li>
+        <li class="nav-item rounded" (click)="activeRoute()" [ngClass]="{'active':activeRegistration}"><a routerLink="/" fragment="Registration" class="nav-link">Registration</a></li>
+        <li class="nav-item rounded" (click)="activeRoute()"><a routerLink="/login" class="nav-link">Login</a></li>
+        <li class="nav-item rounded" (click)="activeRoute()" [ngClass]="{'active':activeContact}"><a routerLink="/" fragment="Contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav> <!-- End Navigation -->

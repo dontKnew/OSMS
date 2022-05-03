@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from '../services/database.service';
 
 @Component({
@@ -17,8 +18,13 @@ export class HomeComponent implements OnInit {
   registrationBtn:string = 'Sign Up';
   registrationBtn1:string = "Submit";
 
+  activeHome:boolean = false;
+  activeRegistration:boolean = false;
+  activeService:boolean = false;
+  activeContact:boolean = false;
+
   contactBtn:string = "Send";
-  constructor(private databaseService:DatabaseService) { }
+  constructor(private databaseService:DatabaseService, private routed:ActivatedRoute) { }
 
   userForm = new FormGroup({
     "name": new FormControl("", [Validators.required]),
@@ -155,7 +161,38 @@ export class HomeComponent implements OnInit {
     }, 3000);
   }
 
+  activeRoute(){
+     let tab:any = this.routed.snapshot.fragment;
+     if(tab=="Home"){
+        this.activeHome = true;
+        this.activeRegistration = false;
+        this.activeService = false;
+        this.activeContact = false;
+     }else if(tab=="Registration"){
+        this.activeRegistration = true;
+        this.activeHome = false;
+        this.activeService = false;
+        this.activeContact = false;
+     }else if(tab=="Contact"){
+        this.activeContact = true;
+        this.activeHome = false;
+        this.activeRegistration = false;
+        this.activeService = false;
+     }else if(tab=="Services"){
+        this.activeService = true;
+        this.activeHome = false;
+        this.activeRegistration = false;
+        this.activeContact = false;
+     }else {
+        this.activeHome = true;
+        this.activeRegistration = false;
+        this.activeService = false;
+        this.activeContact = false;
+     }
+  }
+
   ngOnInit(): void {
+    this.activeRoute();
     
   }
 

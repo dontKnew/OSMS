@@ -1,7 +1,7 @@
 <!-- Top Navbar -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0 text-white" routerLink="/user">OSMS</a>
-    <span class="navbar-text m-2 ">Customer's Happiness is our Aim ! </span>
+    <!-- <span class="navbar-text m-2 ">Customer's Happiness is our Aim ! </span> -->
    </nav>
 
    <!-- Side Bar -->
@@ -11,25 +11,25 @@
       <div class="sidebar-sticky">
        <ul class="nav flex-column">
         <li class="nav-item">
-         <a class="nav-link" (click)="Profile()">
+         <a class="nav-link" (click)="Profile()" [ngClass]="{'bg-dark text-white':profile}">
           <i class="fas fa-user"></i>
           Profile <span class="sr-only">(current)</span>
          </a>
         </li>
         <li class="nav-item">
-         <a class="nav-link" (click)="SubmitRequest()">
+         <a class="nav-link" (click)="SubmitRequest()" [ngClass]="{'bg-dark text-white':submitRequest}">
           <i class="fab fa-accessible-icon"></i>
           Submit Request
          </a>
         </li>
         <li class="nav-item">
-         <a class="nav-link" (click)="ServiceStatus()">
+         <a class="nav-link" (click)="ServiceStatus()" [ngClass]="{'bg-dark text-white':serviceStatus}">
           <i class="fas fa-align-center"></i>
           Service Status
          </a>
         </li>
         <li class="nav-item">
-         <a class="nav-link" (click)="ChangePassword()">
+         <a class="nav-link" (click)="ChangePassword()" [ngClass]="{'bg-dark text-white':changePassword}">
           <i class="fas fa-key"></i>
           Change Password
          </a>

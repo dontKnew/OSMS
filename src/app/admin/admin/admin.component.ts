@@ -177,7 +177,7 @@ export class AdminComponent implements OnInit {
 }
 
   ngOnInit(): void {
-    this.showTab("requester");
+    this.showTab("dashboard");
     this.getRequester();
     this.loginSerivce.adminData();
     this.getRequest();
