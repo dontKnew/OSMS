@@ -9,7 +9,8 @@ export class DatabaseService {
 
   constructor(private http:HttpClient){ }
 
-  url:any  = "http://localhost/PHP/Development/API/OSMS/index.php" 
+  // url:any  = "http://localhost/PHP/Development/API/OSMS/index.php" 
+  url:any = "https://failureboy123.000webhostapp.com/osmsAPI/index.php";
 
 // user features API
 
