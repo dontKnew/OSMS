@@ -1,4 +1,5 @@
 <div class="mt-5">
+  <ng-container *ngIf="!showStatus">
   <p class=" bg-dark text-white p-2 text-center"> Submit Your New Request </p>
     <form class="mx-5" [formGroup]="submitRequest" (ngSubmit)="SubmitRequest()">
       <div class="alert alert-warning col-sm-12 my-2" role="alert" *ngIf="message!==''"> {{message}}  </div>
@@ -69,5 +70,91 @@
         <button type="reset" class="btn btn-secondary" (click)="resetForm()">Reset</button>
       </div>
     </form>
+  </ng-container>
+
     <!-- below msg display if required fill missing or form submitted success or failed -->
+
+    <ng-container *ngIf="showStatus">
+      <h3 class="text-center mt-5">Submitted Requester Details</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Request ID</td>
+            <td>
+              {{requestid1}}
+            </td>
+          </tr>
+          <tr>
+            <td>Request Info</td>
+            <td>
+              {{requestinfo1}}
+            </td>
+          </tr>
+          <tr>
+            <td>Request Description</td>
+            <td>
+              {{requestdesc1}}
+            </td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>
+              {{requestername1}}
+            </td>
+          </tr>
+          <tr>
+            <td>Address Line 1</td>
+            <td>
+              {{requesteradd11}}
+            </td>
+          </tr>
+          <tr>
+            <td>Address Line 2</td>
+            <td>
+              {{requesteradd21}}
+            </td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td>
+              {{requestercity1}}
+            </td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td>
+              {{requesterstate1}}
+            </td>
+          </tr>
+          <tr>
+            <td>Pin Code</td>
+            <td>
+              {{requesterzip1}}
+            </td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>
+              {{requesteremail1}}
+            </td>
+          </tr>
+          <tr>
+            <td>Mobile</td>
+            <td>
+              {{requestermobile1}}
+            </td>
+          </tr>
+          <tr>
+            <td> Request Date </td>
+            <td>
+              {{requestdate1 | date:"dd-MM-yyyy"}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <form class="d-print-none d-inline mr-3"><input class="btn btn-danger" type="submit" value="Print" onClick="window.print()"></form>
+        <form class="d-print-none d-inline"><input class="btn btn-secondary" type="submit" value="Close" (click)="showStatus=false"></form>
+      </div>
+    </ng-container>
   </div>

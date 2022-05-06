@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { slideInAnimation } from 'src/app/app.animation';
 import { DatabaseService } from 'src/app/services/database.service';
 import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
+  animations:[slideInAnimation]
 })
 export class AdminComponent implements OnInit {
 

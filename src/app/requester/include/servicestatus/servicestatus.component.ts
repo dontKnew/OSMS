@@ -41,7 +41,7 @@ export class ServicestatusComponent implements OnInit {
         console.warn(data);
         if(data[1].get[0].data==0){
           // this.message = "Request Submitted. Your Request_Id : " + data[1].post[0].lastId;
-          this.message = "This service request ID - " +this.searchForm.value.searchid+" does not exist";
+          this.message = "Request Id does not approved or might be incorrect";
         }else if(data[1].get[0].data){
           this.requestid = data[1].get[0].data[0].request_id; 
           this.requestinfo = data[1].get[0].data[0].request_info; 

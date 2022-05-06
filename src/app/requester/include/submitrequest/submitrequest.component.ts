@@ -12,6 +12,21 @@ export class SubmitrequestComponent implements OnInit {
 
   message:string = '';
   submitBtn:string = "Submit";
+
+  showStatus:boolean = false;
+
+  requestid1:number = 0;
+  requestinfo1!:string; 
+  requestdesc1!:string; 
+  requestername1!:string; 
+  requesteradd11!:string; 
+  requesteradd21!:string; 
+  requestercity1!:string; 
+  requesterstate1!:string; 
+  requesterzip1!:number; 
+  requesteremail1!:string; 
+  requestermobile1!:number; 
+  requestdate1!:any; 
   
   constructor(public loginService:LoginServiceService, private database:DatabaseService) { }
 
@@ -81,8 +96,23 @@ export class SubmitrequestComponent implements OnInit {
       console.warn(data);
       this.submitBtn = "Submit";
       if(data[1].post[0].status==1){
+        this.showStatus = true;
         window.scroll({ top: 0, left: 0, behavior: 'smooth'});
-        this.message = "Request Submitted. Your Request_Id : " + data[1].post[0].lastId;
+        // this.message = "Request Submitted. Your Request_Id : " + data[1].post[0].lastId;
+        this.requestid1 = data[1].post[0].lastId;
+        
+        this.requestinfo1 = this.submitRequest.value.requestinfo;
+        this.requestdesc1 = this.submitRequest.value.requestdesc;
+        this.requestername1 = this.submitRequest.value.requestername;
+        this.requesteradd11 = this.submitRequest.value.requesteradd1;
+        this.requesteradd21 = this.submitRequest.value.requesteradd2;
+        this.requestercity1 = this.submitRequest.value.requestercity;
+        this.requesterstate1 = this.submitRequest.value.requesterstate;
+        this.requesterzip1 = this.submitRequest.value.requesterzip;
+        this.requesteremail1 = this.submitRequest.value.requesteremail;
+        this.requestermobile1 = this.submitRequest.value.requestermobile;
+        this.requestdate1 = this.submitRequest.value.requestdate;
+        this.submitRequest.reset();
       }else if(data[1].post[0].status==0){
         this.message = "Unable to submit request";
       }else {

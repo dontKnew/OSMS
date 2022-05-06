@@ -95,10 +95,11 @@ export class RequestsComponent implements OnInit {
     next:data=>{
       console.warn(data);
       this.assignBtn = "Submit";
+      console.warn(data[1].post[0]);
       if(data[1].post[0].status==1){
         // window.scroll({ top: 0, left: 0, behavior: 'smooth'});
-          this.message = "Work Assigned Successfully";
           this.deleteRequest(this.assignWorkForm.value.requestid);
+          this.message = "Work Assigned Successfully";
       }else if(data[1].post[0].status==0){
         this.message = "Unable to submit request";
       }else {
@@ -171,15 +172,15 @@ export class RequestsComponent implements OnInit {
   deleteRequest(id:number){
     this.database.deleteRequest(id).subscribe({
       next:data=>{
-        console.warn(data);
+        // con
         if(data[1].delete[0].status == 1){
-          this.message = "request has been deleted";
+          // this.message = "request has been deleted";
           this.getRequest();
         }if(data[1].delete[0].status == 0){
-          this.message = "request could not delete8";
+          // this.message = "request could not delete8";
           this.getRequest();
         }else {
-          this.message = "Server response error";
+          // this.message = "Server response error";
         }
       }, 
       error:error=>{

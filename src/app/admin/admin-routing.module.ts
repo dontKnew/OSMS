@@ -6,8 +6,16 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './services/login.guard';
 
 const routes: Routes = [
-  {path:'author', component:LoginComponent, canActivate:[UnloginGuard]},
-  {path:'dashboard', component:AdminComponent, canActivate:[LoginGuard]}
+  { path:'author', 
+    component:LoginComponent,
+    canActivate:[UnloginGuard],
+    // data: { animation: 'openClosePage' }
+   },
+  { path:'dashboard', 
+    component:AdminComponent, 
+    canActivate:[LoginGuard],
+    // data: { animation: 'openClosePage' }
+  }
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { MainComponent } from './testing/main/main.component';
 import { Col1Component } from './testing/col1/col1.component';
 import { Col2Component } from './testing/col2/col2.component';
 import { Col3Component } from './testing/col3/col3.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { Col3Component } from './testing/col3/col3.component'
     AdminRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
