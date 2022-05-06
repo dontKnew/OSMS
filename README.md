@@ -5,7 +5,7 @@
 
 <hr>
 
-<!-- # <a href="https://dontknew.github.io/osms" target="blank"> checkout Demo </a>
+ # <a href="https://dontknew.github.io/osms" target="blank"> checkout Demo </a>
 
 ## Project Features :
 ##  User Features :
