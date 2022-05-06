@@ -1,46 +1,51 @@
 # ONLINE SERVICE MANAGEMENT SYSTEM 🥇
-> This project all design copied from "GeekyShows" Youtube Channel  
-> You can download this project and run your local machine (computer)
+> This project all design copied from "GeekyShows" Youtube Channel
+> I have convert thats geeykshows php project (OSMS) to angular.  
+> This is project based on the service center , where user can submit a request for repair her/his electronic items.
+
 <hr>
 
-<!-- # <a href="https://dontknew.github.io/food-delivery" target="blank"> checkout Demo </a>
+<!-- # <a href="https://dontknew.github.io/osms" target="blank"> checkout Demo </a>
 
 ## Project Features :
-### Public User Features :
-| Public user can order food & add to cart food items|
+##  User Features :
+| User can create account with otp verification only with GMAIL Account|
 | ------------- |
 
-| Cart System  |
+| Submit Request for repairing  |
 | ------------- |
 
-| Public user can track order status  |
+| User can track their of items repair status|
 | ------------- |
 
-| Public user can give feedback or contact to administrator  |
+| user can update their profile information  |
+| ------------- |
+
+| Public user can contact to adminstrator for any query |
+| ------------- |
+
+| Contact form will be sent to admin email inbox
 | ------------- |
 
 ### Admin Features :
 
-| Admin can add another admin/member for manage website |
+| Admin can add new user |
 | ------------- |
 
-| Cart System  |
+| Admin Can manage submitted request by user  |
 | ------------- |
 
-| Public user can track order status  |
+| Admin Dashboard avaiable  |
 | ------------- |
 
-| Public user can give feedback or contact to administrator  |
-| ------------- |
-
-|  Admin can check food order details & manage the food until delivery to customer  |
-| ------------- |
-
-|  Admin can update  contents and theme of webpage   |
+| Admin can add new assets  |
 | ------------- |
 
 |  Admin can change their profile information   |
-| ------------- | -->
+| ------------- | 
+
+|  Many other features available, checkout demo!   |
+| ------------- | 
 
 
 
